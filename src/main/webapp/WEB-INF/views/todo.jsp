@@ -1,11 +1,17 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
-<!Doctype html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-<title>Todo</title>
+<title>Yahoo!!</title>
 </head>
 <body>
-	<p>Your Todo's are:</p>
-	<p>${todos}</p>
+<H1>Welcome ${name}</H2>
+<div>
+Your Todos are
+<ol>
+<c:forEach items="${todos}" var="todo">
+   <li>${todo.name}</li>
+</c:forEach>
+</ol>
+</div>
 </body>
 </html>
