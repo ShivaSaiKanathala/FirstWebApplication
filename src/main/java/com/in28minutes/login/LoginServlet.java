@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 
 		boolean isUserValid = userValidationService.isUserValid(name, password);
 		if(isUserValid) {
-		
+			request.getSession().setAttribute("name", name);
 		response.sendRedirect("/todo.do");
 		}
 		else {
