@@ -12,17 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.in28minutes.todo.TodoService;
 
 
-@WebServlet(urlPatterns = "/todo.do")
-public class TodoServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/add-todo.do")
+public class AddTodoServlet extends HttpServlet {
 
 	private TodoService todoService = new TodoService();
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
-		request.setAttribute("todos", todoService.retrieveTodos());
-		request.getRequestDispatcher("/WEB-INF/views/todo.jsp").forward(request, response);
-	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -30,8 +23,7 @@ public class TodoServlet extends HttpServlet {
 		String newTodo = request.getParameter("todo");
 		todoService.addTodo(new Todo(newTodo));
 		response.sendRedirect("/todo.do");
-		/*request.setAttribute("todos", todoService.retrieveTodos());
-		request.getRequestDispatcher("/WEB-INF/views/todo.jsp").forward(request, response);*/
+		
 	}
 
 }
